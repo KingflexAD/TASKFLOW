@@ -1,31 +1,32 @@
 import Task from "../models/taskModel.js";
 //Create a new Task
 
-export const createTask = async (req, res)=>{
-    try {
-        const {title, description, priority, dueDate, completed} = req.body;
+export const createTask = async (req, res) => {
+  try {
+    const { title, description, priority, dueDate, completed } = req.body;
 
-        const task = new Task({ // this creates a new document instance but doesnt save in db until .save is performed
-            title,
-            description,
-            priority,
-            dueDate,
-            completed : completed === 'Yes' || completed === true,
-            owner : req.user.id
-
-        });
-        const saved = await task.save();
-        res.status(201).json({succes : true , task : saved});
-    } catch (err) {
-        res.status(400).json({success : false , message : err.message});
-        
-    }
+    const task = new Task({
+      // this creates a new document instance but doesnt save in db until .save is performed
+      title,
+      description,
+      priority,
+      dueDate,
+      completed: completed === "Yes" || completed === true,
+      owner: req.user.id,
+    });
+    const saved = await task.save();
+    res.status(201).json({ succes: true, task: saved });
+  } catch (err) {
+    res.status(400).json({ success: false, message: err.message });
+  }
 };
 
 // GET ALL TASKS FOR LOGGED-IN USER
 export const getTasks = async (req, res) => {
   try {
-    const tasks = await Task.find({ owner: req.user.id }).sort({ createdAt: -1 }); // sort by newest first
+    const tasks = await Task.find({ owner: req.user.id }).sort({
+      createdAt: -1,
+    }); // sort by newest first
 
     res.json({ success: true, tasks });
   } catch (err) {
@@ -36,15 +37,15 @@ export const getTasks = async (req, res) => {
 // GET SINGLE TASK BY ID (MUST BELONG TO THAT USER)
 export const getTaskById = async (req, res) => {
   try {
-    const task = await Task.findOne({ 
-      _id: req.params.id, 
-      owner: req.user.id 
+    const task = await Task.findOne({
+      _id: req.params.id,
+      owner: req.user.id,
     });
 
     if (!task) {
       return res.status(404).json({
         success: false,
-        message: "Task not found"
+        message: "Task not found",
       });
     }
 
@@ -61,19 +62,19 @@ export const updateTask = async (req, res) => {
 
     // Handle "completed" field specially
     if (data.completed !== undefined) {
-      data.completed = data.completed === 'Yes' || data.completed === true;
+      data.completed = data.completed === "Yes" || data.completed === true;
     }
 
     const updated = await Task.findOneAndUpdate(
       { _id: req.params.id, owner: req.user.id }, // ensure task belongs to user
-      data,                                       // fields to update
-      { new: true, runValidators: true }          // return updated doc & validate schema
+      data, // fields to update
+      { new: true, runValidators: true } // return updated doc & validate schema
     );
 
     if (!updated) {
       return res.status(404).json({
         success: false,
-        message: "Task not found or not yours"
+        message: "Task not found or not yours",
       });
     }
 
@@ -88,13 +89,13 @@ export const deleteTask = async (req, res) => {
   try {
     const deleted = await Task.findOneAndDelete({
       _id: req.params.id,
-      owner: req.user.id
+      owner: req.user.id,
     });
 
     if (!deleted) {
       return res.status(404).json({
         success: false,
-        message: "Task not found or not yours"
+        message: "Task not found or not yours",
       });
     }
 
@@ -103,6 +104,3 @@ export const deleteTask = async (req, res) => {
     res.status(500).json({ success: false, message: err.message });
   }
 };
-
-
-

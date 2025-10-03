@@ -15,7 +15,7 @@ export const createTask = async (req, res) => {
       owner: req.user.id,
     });
     const saved = await task.save();
-    res.status(201).json({ succes: true, task: saved });
+    res.status(201).json({ success: true, task: saved });
   } catch (err) {
     res.status(400).json({ success: false, message: err.message });
   }

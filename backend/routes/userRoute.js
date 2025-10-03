@@ -17,7 +17,7 @@ userRouter.post("/login", loginUser);
 //private links
 
 userRouter.get("/me", authMiddleware, getCurrentUser);
-userRouter.put("/profile", updateProfile);
-userRouter.put("/password", updatePassword);
+userRouter.put("/profile",authMiddleware, updateProfile);
+userRouter.put("/password",authMiddleware, updatePassword);
 
 export default userRouter;

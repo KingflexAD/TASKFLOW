@@ -176,7 +176,7 @@ export const getPriorityColor = (priority) => {
     high: "border-fuchsia-800 bg-fuchsia-50/50 text-fuchsia-800",
   };
   return (
-    colors[priority?.tolowerCase()] ||
+    colors[priority?.toLowerCase()] ||
     "border-gray-500 bg-gray-50/50 text-gray-700"
   );
 };
@@ -187,7 +187,7 @@ export const getPriorityBadgeColor = (priority) => {
     medium: "bg-purple-100 text-purple-900",
     high: "bg-fuchsia-300 text-fuchsia-900",
   };
-  return colors[priority?.tolowerCase()] || "bg-gray-100 text-gray-700";
+  return colors[priority?.toLowerCase()] || "bg-gray-100 text-gray-700";
 };
 
 // DASHBOARD
@@ -378,7 +378,4 @@ export const TI_CLASSES = {
   createdRow:
     "flex items-center gap-1.5 text-xs text-gray-400 whitespace-nowrap",
 };
-// APP.JSX
-const user = {
-  avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(data.name || "User")}&background=random`,
-};
+

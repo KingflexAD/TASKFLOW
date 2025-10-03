@@ -11,12 +11,12 @@ import {
 const taskRouter = express.Router();
 
 taskRouter
-  .route("/gp")
+  .route("/")
   .get(authMiddleware, getTasks)
   .post(authMiddleware, createTask);
 
 taskRouter
-  .route("/:id/gp")
+  .route("/:id")
   .get(authMiddleware, getTaskById)
   .put(authMiddleware, updateTask)
   .delete(authMiddleware, deleteTask);

@@ -1,10 +1,9 @@
-// src/components/Layout.jsx
+// src/components/Layout.jsx - COMPLETE REWRITE
 import React, { useState, useEffect, useCallback } from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import api from '../api';
-import { toast } from 'react-toastify';
 
 export default function Layout({ currentUser, onLogout }) {
   const [tasks, setTasks] = useState([]);
@@ -32,7 +31,6 @@ export default function Layout({ currentUser, onLogout }) {
     fetchTasks();
   }, [fetchTasks]);
 
-  // Calculate stats for right sidebar
   const stats = {
     total: tasks.length,
     completed: tasks.filter(t => 
@@ -56,19 +54,23 @@ export default function Layout({ currentUser, onLogout }) {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Navbar */}
       <Navbar user={currentUser} onLogout={onLogout} />
       
-      <div className="flex">
-        {/* Left Sidebar */}
-        <Sidebar user={currentUser} tasks={tasks} />
+      {/* Container with Flexbox */}
+      <div className="flex relative">
+        {/* Left Sidebar - Fixed */}
+        <div className="fixed left-0 top-16 h-[calc(100vh-4rem)] z-20">
+          <Sidebar user={currentUser} tasks={tasks} />
+        </div>
 
-        {/* Main Content Area */}
-        <main className="flex-1 ml-0 md:ml-20 lg:ml-64 mr-0 lg:mr-80 p-4 md:p-6">
+        {/* Main Content - With proper left margin */}
+        <main className="flex-1 min-h-[calc(100vh-4rem)] ml-20 lg:ml-64 mr-0 lg:mr-80 ">
           <Outlet context={{ tasks, refreshTasks: fetchTasks, loading, error }} />
         </main>
 
-        {/* Right Stats Sidebar - Hidden on mobile/tablet */}
-        <aside className="hidden lg:block fixed right-0 top-16 w-80 h-[calc(100vh-4rem)] bg-white border-l border-purple-100 p-6 overflow-y-auto">
+        {/* Right Stats Sidebar - Fixed */}
+        <aside className="hidden lg:block fixed right-0 top-16 w-80 h-[calc(100vh-4rem)] bg-white border-l border-purple-100 p-6 overflow-y-auto z-10">
           <div className="space-y-6">
             {/* Task Statistics */}
             <div>

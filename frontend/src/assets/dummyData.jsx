@@ -1,3 +1,4 @@
+// src/assets/dummyData.js
 import {
   User,
   Mail,
@@ -12,13 +13,9 @@ import {
   Award,
   Edit2,
   Trash2,
-  MoreVertical,
-  Clock,
-  Calendar,
 } from "lucide-react";
 
-// BACKEND TEST
-// DUMMY DATA
+// BACKEND TEST DUMMY DATA
 const backendDummy = [
   {
     title: "Buy groceries",
@@ -26,13 +23,6 @@ const backendDummy = [
     priority: "low",
     dueDate: "2025-05-02T18:00:00.000Z",
     completed: "No",
-  },
-  {
-    title: "Book dentist appointment",
-    description: "Routine check-up and cleaning",
-    priority: "medium",
-    dueDate: "2025-05-10T10:00:00.000Z",
-    completed: true,
   },
   {
     title: "Book dentist appointment",
@@ -50,9 +40,7 @@ const backendDummy = [
   },
 ];
 
-// FRONTEND DUMMY DATA
-
-// assets/formConstants.js
+// ===== FORM CONSTANTS =====
 export const baseControlClasses =
   "w-full px-4 py-2.5 border border-purple-100 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-sm";
 
@@ -62,7 +50,6 @@ export const priorityStyles = {
   high: "bg-fuchsia-100 text-fuchsia-700 border-fuchsia-200",
 };
 
-// data/defaultTask.js
 export const DEFAULT_TASK = {
   title: "",
   description: "",
@@ -72,13 +59,13 @@ export const DEFAULT_TASK = {
   id: null,
 };
 
-// LOGIN CSS
+// ===== LOGIN CSS =====
 export const INPUTWRAPPER =
   "flex items-center border border-purple-100 rounded-lg px-3 py-2.5 focus-within:ring-2 focus-within:ring-purple-500 focus-within:border-purple-500 transition-all duration-200";
 export const BUTTON_CLASSES =
   "w-full bg-gradient-to-r from-fuchsia-500 to-purple-600 text-white text-sm font-semibold py-2.5 rounded-lg hover:shadow-md transition-all duration-200 flex items-center justify-center gap-2";
 
-// PROFILE CSS
+// ===== PROFILE CSS =====
 export const INPUT_WRAPPER =
   "flex items-center border border-purple-100 rounded-lg px-3 py-2.5 focus-within:ring-2 focus-within:ring-purple-500 focus-within:border-purple-500 transition-all duration-200";
 export const FULL_BUTTON =
@@ -101,7 +88,7 @@ export const securityFields = [
   { name: "confirm", placeholder: "Confirm Password" },
 ];
 
-// SIDEBAR
+// ===== SIDEBAR =====
 export const menuItems = [
   { text: "Dashboard", path: "/", icon: <Home className="w-5 h-5" /> },
   {
@@ -152,7 +139,7 @@ export const TIP_CARD = {
   text: "text-xs text-gray-600 mt-1",
 };
 
-// SIGNUP
+// ===== SIGNUP =====
 export const FIELDS = [
   { name: "name", type: "text", placeholder: "Full Name", icon: User },
   { name: "email", type: "email", placeholder: "Email", icon: Mail },
@@ -168,7 +155,7 @@ export const MESSAGE_SUCCESS =
 export const MESSAGE_ERROR =
   "bg-red-50 text-red-600 p-3 rounded-lg text-sm mb-4 border border-red-100";
 
-// TASK ITEM
+// ===== TASK ITEM =====
 export const getPriorityColor = (priority) => {
   const colors = {
     low: "border-green-500 bg-green-50/50 text-green-700",
@@ -190,22 +177,52 @@ export const getPriorityBadgeColor = (priority) => {
   return colors[priority?.toLowerCase()] || "bg-gray-100 text-gray-700";
 };
 
-// DASHBOARD
-// UI Constants
-export const WRAPPER = "p-4 md:p-6 min-h-screen overflow-hidden";
-export const HEADER =
-  "flex flex-col md:flex-row justify-between items-start md:items-center mb-4 md:mb-6 gap-3";
+export const MENU_OPTIONS = [
+  {
+    action: "edit",
+    label: "Edit Task",
+    icon: <Edit2 size={14} className="text-purple-600" />,
+  },
+  {
+    action: "delete",
+    label: "Delete Task",
+    icon: <Trash2 size={14} className="text-red-600" />,
+  },
+];
+
+export const TI_CLASSES = {
+  wrapper:
+    "group p-4 sm:p-5 rounded-xl shadow-sm bg-white border-l-4 hover:shadow-md transition-all duration-300 border border-purple-100",
+  leftContainer: "flex items-start gap-2 sm:gap-3 flex-1 min-w-0",
+  completeBtn:
+    "mt-0.5 sm:mt-1 p-1 sm:p-1.5 rounded-full hover:bg-purple-100 transition-colors duration-300",
+  checkboxIconBase: "w-4 h-4 sm:w-5 sm:h-5",
+  titleBase: "text-base sm:text-lg font-medium truncate",
+  priorityBadge: "text-xs px-2 py-0.5 rounded-full shrink-0",
+  description: "text-sm text-gray-500 mt-1 truncate",
+  rightContainer: "flex flex-col items-end gap-2 sm:gap-3",
+  menuButton:
+    "p-1 sm:p-1.5 hover:bg-purple-100 rounded-lg text-gray-500 hover:text-purple-700 transition-colors duration-200",
+  menuDropdown:
+    "absolute right-0 mt-1 w-40 sm:w-48 bg-white border border-purple-100 rounded-xl shadow-lg z-10 overflow-hidden animate-fadeIn",
+  dateRow: "flex items-center gap-1.5 text-xs font-medium whitespace-nowrap",
+  createdRow:
+    "flex items-center gap-1.5 text-xs text-gray-400 whitespace-nowrap",
+};
+
+// ===== DASHBOARD ===== (✅ FIXED SPACING)
+export const WRAPPER = "p-2 min-h-screen overflow-hidden";
+export const HEADER = "flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4";
 export const ADD_BUTTON =
-  "flex items-center gap-2 bg-gradient-to-r from-fuchsia-500 to-purple-600 text-white px-4 py-2 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 w-full md:w-auto justify-center text-sm md:text-base";
+  "flex items-center gap-2 bg-gradient-to-r from-fuchsia-500 to-purple-600 text-white px-5 py-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 font-medium text-sm whitespace-nowrap";
 export const STATS_GRID =
-  "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-4 md:mb-6";
+  "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6";
 export const STAT_CARD =
-  "p-3 md:p-4 rounded-xl bg-white shadow-sm border border-purple-100 hover:shadow-md transition-all duration-300 min-w-0";
-export const ICON_WRAPPER = "p-1.5 md:p-2 rounded-lg";
-export const VALUE_CLASS = "text-lg md:text-2xl font-bold truncate";
+  "p-4 rounded-xl bg-white shadow-sm border border-purple-100 hover:shadow-md transition-all duration-300 min-w-0";
+export const ICON_WRAPPER = "p-2 rounded-lg";
+export const VALUE_CLASS = "text-2xl font-bold truncate";
 export const LABEL_CLASS = "text-xs text-gray-500 truncate";
 
-// Stats definitions
 export const STATS = [
   {
     key: "total",
@@ -220,7 +237,6 @@ export const STATS = [
     label: "low Priority",
     icon: Flame,
     iconColor: "bg-green-100 text-green-600",
-    borderColor: "border-green-100",
     valueKey: "lowPriority",
     textColor: "text-green-600",
   },
@@ -229,7 +245,6 @@ export const STATS = [
     label: "medium Priority",
     icon: Flame,
     iconColor: "bg-orange-100 text-orange-600",
-    borderColor: "border-orange-100",
     valueKey: "mediumPriority",
     textColor: "text-orange-600",
   },
@@ -238,13 +253,11 @@ export const STATS = [
     label: "high Priority",
     icon: Flame,
     iconColor: "bg-red-100 text-red-600",
-    borderColor: "border-red-100",
     valueKey: "highPriority",
     textColor: "text-red-600",
   },
 ];
 
-// Filter options
 export const FILTER_OPTIONS = ["all", "today", "week", "high", "medium", "low"];
 export const FILTER_LABELS = {
   all: "All Tasks",
@@ -255,64 +268,61 @@ export const FILTER_LABELS = {
   low: "low Priority",
 };
 
-// Empty state
 export const EMPTY_STATE = {
   wrapper:
-    "p-6 bg-white rounded-xl shadow-sm border border-purple-100 text-center",
+    "p-8 bg-white rounded-xl shadow-sm border border-purple-100 text-center",
   iconWrapper:
     "w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4",
-  btn: "px-4 py-2 bg-gradient-to-r from-fuchsia-500 to-purple-600 text-white rounded-lg text-sm font-medium",
+  btn: "px-4 py-2 bg-gradient-to-r from-fuchsia-500 to-purple-600 text-white rounded-lg text-sm font-medium hover:shadow-md transition-all",
 };
 
-// Filter UI Constants
 export const FILTER_WRAPPER =
-  "flex items-center justify-between bg-white p-4 rounded-xl shadow-sm";
+  "flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white p-4 rounded-xl shadow-sm border border-purple-100";
 export const SELECT_CLASSES =
-  "px-3 py-2 border border-purple-100 rounded-lg focus:ring-2 focus:ring-purple-500 md:hidden text-sm";
+  "sm:hidden w-full px-3 py-2 border border-purple-100 rounded-lg focus:ring-2 focus:ring-purple-500 text-sm";
 export const TABS_WRAPPER =
-  "hidden md:flex space-x-1 bg-purple-50 p-1 rounded-lg";
+  "hidden sm:flex items-center gap-1 bg-purple-50 p-1 rounded-lg";
 export const TAB_BASE =
   "px-3 py-1.5 rounded-lg text-xs font-medium transition-all";
-export const TAB_ACTIVE = "bg-white text-purple-700 shadow-sm border";
+export const TAB_ACTIVE = "bg-white text-purple-700 shadow-sm border border-purple-100";
 export const TAB_INACTIVE = "text-gray-600 hover:bg-purple-100/50";
 
-// COMPLETE TASK
+// ===== COMPLETED PAGE =====
 export const SORT_OPTIONS = [
   { id: "newest", label: "Newest", icon: <SortDesc className="w-3 h-3" /> },
   { id: "oldest", label: "Oldest", icon: <SortAsc className="w-3 h-3" /> },
   { id: "priority", label: "Priority", icon: <Award className="w-3 h-3" /> },
 ];
 
-// CSS class groups
 export const CT_CLASSES = {
-  page: "p-4 md:p-6 min-h-screen overflow-hidden",
+  page: "p-6 min-h-screen overflow-hidden",
   header:
-    "flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 gap-3 md:gap-4",
+    "flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4",
   titleWrapper: "flex-1 min-w-0",
   title:
-    "text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 flex items-center gap-2 truncate",
-  subtitle: "text-xs md:text-sm text-gray-500 mt-1 ml-7 md:ml-8",
-  sortContainer: "w-full md:w-auto mt-2 md:mt-0",
+    "text-2xl md:text-3xl font-bold text-gray-800 flex items-center gap-2 truncate",
+  subtitle: "text-sm text-gray-500 mt-1 ml-8",
+  sortContainer: "w-full md:w-auto",
   sortBox:
-    "flex items-center justify-between bg-white p-2 md:p-3 rounded-xl shadow-sm border border-purple-100 w-full md:w-auto",
-  filterLabel: "flex items-center gap-2 text-gray-700 font-medium",
+    "flex items-center justify-between bg-white p-3 rounded-xl shadow-sm border border-purple-100 w-full md:w-auto",
+  filterLabel: "flex items-center gap-2 text-gray-700 font-medium text-sm",
   select:
-    "px-2 py-1 md:px-3 md:py-2 border border-purple-100 rounded-lg focus:ring-2 focus:ring-purple-500 md:hidden text-xs md:text-sm",
-  btnGroup: "hidden md:flex space-x-1 bg-purple-50 p-1 rounded-lg ml-2 md:ml-3",
+    "px-3 py-2 border border-purple-100 rounded-lg focus:ring-2 focus:ring-purple-500 md:hidden text-sm",
+  btnGroup: "hidden md:flex space-x-1 bg-purple-50 p-1 rounded-lg ml-3",
   btnBase:
-    "px-2 py-1 md:px-3 md:py-1.5 rounded-lg text-xs font-medium transition-all duration-200 flex items-center gap-1",
+    "px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 flex items-center gap-1",
   btnActive: "bg-white text-purple-700 shadow-sm border border-purple-100",
   btnInactive: "text-gray-600 hover:text-purple-700 hover:bg-purple-100/50",
-  list: "space-y-3 md:space-y-4",
+  list: "space-y-4",
   emptyState:
-    "p-4 md:p-8 bg-white rounded-xl shadow-sm border border-purple-100 text-center",
+    "p-8 bg-white rounded-xl shadow-sm border border-purple-100 text-center",
   emptyIconWrapper:
-    "w-12 h-12 md:w-16 md:h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4",
-  emptyTitle: "text-base md:text-lg font-semibold text-gray-800 mb-2",
-  emptyText: "text-xs md:text-sm text-gray-500",
+    "w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4",
+  emptyTitle: "text-lg font-semibold text-gray-800 mb-2",
+  emptyText: "text-sm text-gray-500",
 };
 
-// constants/cssClasses.js
+// ===== PENDING PAGE =====
 export const layoutClasses = {
   container: "p-6 min-h-screen overflow-hidden",
   headerWrapper:
@@ -337,45 +347,3 @@ export const layoutClasses = {
   emptyBtn:
     "px-4 py-2 bg-purple-100 hover:bg-purple-200 text-purple-700 rounded-lg text-sm font-medium transition-colors",
 };
-
-// TASK ITEM
-// Menu options for task actions
-export const MENU_OPTIONS = [
-  {
-    action: "edit",
-    label: "Edit Task",
-    icon: <Edit2 size={14} className="text-purple-600" />,
-  },
-  {
-    action: "delete",
-    label: "Delete Task",
-    icon: <Trash2 size={14} className="text-red-600" />,
-  },
-];
-
-// CSS class groups for TaskItem
-export const TI_CLASSES = {
-  wrapper:
-    "group p-4 sm:p-5 rounded-xl shadow-sm bg-white border-l-4 hover:shadow-md transition-all duration-300 border border-purple-100",
-  leftContainer: "flex items-start gap-2 sm:gap-3 flex-1 min-w-0",
-  completeBtn:
-    "mt-0.5 sm:mt-1 p-1 sm:p-1.5 rounded-full hover:bg-purple-100 transition-colors duration-300",
-  checkboxIconBase: "w-4 h-4 sm:w-5 sm:h-5",
-  titleBase: "text-base sm:text-lg font-medium truncate",
-  priorityBadge: "text-xs px-2 py-0.5 rounded-full shrink-0",
-  description: "text-sm text-gray-500 mt-1 truncate",
-  subtasksContainer:
-    "mt-3 sm:mt-4 space-y-2 sm:space-y-3 bg-purple-50/30 p-2 sm:p-3 rounded-lg border border-purple-100",
-  progressBarBg: "h-1.5 bg-purple-100 rounded-full overflow-hidden",
-  progressBarFg:
-    "h-full bg-gradient-to-r from-fuchsia-500 to-purple-600 transition-all duration-300",
-  rightContainer: "flex flex-col items-end gap-2 sm:gap-3",
-  menuButton:
-    "p-1 sm:p-1.5 hover:bg-purple-100 rounded-lg text-gray-500 hover:text-purple-700 transition-colors duration-200",
-  menuDropdown:
-    "absolute right-0 mt-1 w-40 sm:w-48 bg-white border border-purple-100 rounded-xl shadow-lg z-10 overflow-hidden animate-fadeIn",
-  dateRow: "flex items-center gap-1.5 text-xs font-medium whitespace-nowrap",
-  createdRow:
-    "flex items-center gap-1.5 text-xs text-gray-400 whitespace-nowrap",
-};
-
